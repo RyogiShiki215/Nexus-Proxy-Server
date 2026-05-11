@@ -1,0 +1,26 @@
+services:
+  nexus-proxy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nexus-proxy-server:latest
+    container_name: nexus-proxy
+    restart: unless-stopped
+    ports:
+      - "${NEXUS_PORT:-9800}:${NEXUS_PORT:-9800}"
+    volumes:
+      - ./data:/app/data
+    environment:
+      TZ: ${TZ:-UTC}
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      NEXUS_HOST: 0.0.0.0
+      NEXUS_PORT: ${NEXUS_PORT:-9800}
+      NEXUS_UPSTREAM_URL: ${NEXUS_UPSTREAM_URL:-https://example.com/api/optimize}
+      NEXUS_WC_SECRET: ${NEXUS_WC_SECRET:-change-me}
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import os, urllib.request; port=os.getenv('NEXUS_PORT', os.getenv('PORT', '9800')); urllib.request.urlopen(f'http://127.0.0.1:{port}/v1/models', timeout=3).read()\""]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3

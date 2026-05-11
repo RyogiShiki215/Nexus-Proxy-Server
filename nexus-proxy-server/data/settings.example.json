@@ -1,0 +1,17 @@
+{
+  "mode": "random",
+  "admin_password_hash": "example-only-generated-at-runtime",
+  "upstream_url": "https://example.com/api/optimize",
+  "wc_secret": "change-me",
+  "max_timeout": 320,
+  "auto_register": false,
+  "auto_register_target": 20,
+  "auto_register_interval": 60,
+  "auto_register_max_per_hour": 5,
+  "auto_clean_exhausted": true,
+  "max_body_size": 512,
+  "api_rpm_limit": 0,
+  "api_prepend_enabled": false,
+  "api_prepend_prompt": "",
+  "timezone": "UTC"
+}
