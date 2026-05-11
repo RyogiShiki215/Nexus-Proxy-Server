@@ -1,0 +1,12 @@
+[
+  {
+    "deviceId": "device-example000000",
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "proxy": "",
+    "fake_ip": "203.0.113.10",
+    "used_count": 0,
+    "max_per_hour": 5,
+    "last_reset_ts": 0,
+    "enabled": true
+  }
+]
